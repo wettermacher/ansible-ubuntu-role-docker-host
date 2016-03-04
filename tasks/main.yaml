@@ -1,0 +1,17 @@
+---
+
+  - name: install required packages for ansible apt_repository module
+    apt: name=python-apt
+  - name: add key for docker apt repository
+    apt_key: keyserver=hkp://p80.pool.sks-keyservers.net:80  id=58118E89F3A912897C070ADBF76221572C52609D
+    retries: 3
+  - name: add docker apt repository
+    apt_repository: "repo='deb https://apt.dockerproject.org/repo ubuntu-{{ ansible_distribution_release }} main' state=present update_cache=yes"
+  - name: install docker
+    apt: name=docker-engine state=latest
+  - name: packages recommended by docker
+    apt: "name=linux-image-extra-{{ansible_kernel}}"
+  - name: install python pip
+    apt: name=python-pip state=latest
+  - name: install docker-py
+    pip: name=docker-py
