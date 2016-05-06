@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  author: Christoph Luetjen
+  description: An Ansible role to install docker with python api.
+  company: wettermacher.eu
+  license: Apache
+  min_ansible_version: 1.6
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+  categories:
+  - cloud
+  - system
